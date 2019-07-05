@@ -28,13 +28,13 @@ var env = {
   projectName: process.env.COMPOSE_PROJECT_NAME,
   loginPageTitle: 'Keyguru Console',
   hostName: process.env.API_HOSTNAME,
-  //apiBaseUrl: 'https://' + process.env.API_HOSTNAME +  ':7443' + '/api',
   apiBaseUrl: process.env.API_BASEURL + '/api',
   apiDirectUrl: 'https://' + process.env.API_HOSTNAME,
   slackClientId: '233115403974.233317554391',
   wssUrl: 'wss://' + process.env.API_HOSTNAME +  ':7444',
   baseUrl: 'https://' + process.env.WEB_HOSTNAME + ':7443',
   googleTrackingCode: process.env.GOOGLE_ANALYTICS_ID,
+  rollbarAccessToken: process.env.ROLLBAR_ACCESS_TOKEN,
   projectDescription: isEnterprise ? '' : 'Manage IoT devices (for MCUs eg. ESP32, ESP8266 or any systems running Node.js, Micropython, NodeMCU, Arduino...), build and update firmwares remotely (FOTA/firmware-over-the-air), transform and route sensor data (MQTT)'
 };
 

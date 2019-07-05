@@ -34,7 +34,7 @@ angular.module('RTM').controller('EditorController', ['$rootScope', '$scope', 's
       console.log('-- updating transformer ' + $scope.overlayEditor.utid + '--');
       $rootScope.getTransformerByUtid($scope.overlayEditor.utid).body = base64converter('encode', $scope.overlayEditor.body);
       $rootScope.getTransformerByUtid($scope.overlayEditor.utid).alias = $scope.overlayEditor.alias;
-    };
+    }
 
     $scope.$emit("saveProfileChanges", ["transformers"]);
     $rootScope.hideEditorOverlay();

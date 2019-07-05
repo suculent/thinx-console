@@ -1,5 +1,5 @@
 /**
-Core script to handle the entire theme and core functions
+  Theme and core
 **/
 var App = function() {
 
@@ -12,14 +12,9 @@ var App = function() {
     var resizeHandlers = [];
 
     var assetsPath = '/assets/';
-
     var globalImgPath = '/assets/global/img/';
-
     var globalPluginsPath = '/assets/global/plugins/';
-
     var globalCssPath = '/assets/global/css/';
-
-    // theme layout color set
 
     var brandColors = {
         'blue': '#89C4F4',
@@ -574,32 +569,31 @@ var App = function() {
 
     return {
 
-        //main function to initiate the theme
         init: function() {
-            //IMPORTANT!!!: Do not modify the core handlers call order.
+            // Keep the order!
 
-            //Core handlers
-            handleInit(); // initialize core variables
-            handleOnResize(); // set and handle responsive
+            // Core handlers
+            handleInit();
+            handleOnResize();
 
-            //UI Component handlers
-            handleMaterialDesign(); // handle material design
-            handleiCheck(); // handles custom icheck radio and checkboxes
-            handleBootstrapSwitch(); // handle bootstrap switch plugin
-            handleScrollers(); // handles slim scrolling contents
-            handleFancybox(); // handle fancy box
-            handleSelect2(); // handle custom Select2 dropdowns
-            handlePortletTools(); // handles portlet action bar functionality(refresh, configure, toggle, remove)
-            handleAlerts(); //handle closabled alerts
-            handleDropdowns(); // handle dropdowns
-            handleTabs(); // handle tabs
-            handleTooltips(); // handle bootstrap tooltips
-            handlePopovers(); // handles bootstrap popovers
-            handleAccordions(); //handles accordions
-            handleModals(); // handle modals
-            handleBootstrapConfirmation(); // handle bootstrap confirmations
-            handleTextareaAutosize(); // handle autosize textareas
-            handleCounterup(); // handle counterup instances
+            // UI Component handlers
+            handleMaterialDesign();
+            handleiCheck();
+            handleBootstrapSwitch();
+            handleScrollers();
+            handleFancybox();
+            handleSelect2();
+            handlePortletTools();
+            handleAlerts();
+            handleDropdowns();
+            handleTabs();
+            handleTooltips();
+            handlePopovers();
+            handleAccordions();
+            handleModals();
+            handleBootstrapConfirmation();
+            handleTextareaAutosize();
+            handleCounterup();
 
             //Handle group element heights
             this.addResizeHandler(handleHeight); // handle auto calculating height on window resize
@@ -608,37 +602,32 @@ var App = function() {
             handleFixInputPlaceholderForIE(); //IE8 & IE9 input placeholder issue fix
         },
 
-        //main function to initiate core javascript after ajax complete
         initAjax: function() {
             //handleUniform(); // handles custom radio & checkboxes
-            handleiCheck(); // handles custom icheck radio and checkboxes
-            handleBootstrapSwitch(); // handle bootstrap switch plugin
-            handleScrollers(); // handles slim scrolling contents
-            handleSelect2(); // handle custom Select2 dropdowns
-            handleFancybox(); // handle fancy box
-            handleDropdowns(); // handle dropdowns
-            handleTooltips(); // handle bootstrap tooltips
-            handlePopovers(); // handles bootstrap popovers
-            handleAccordions(); //handles accordions
-            handleBootstrapConfirmation(); // handle bootstrap confirmations
+            handleiCheck();
+            handleBootstrapSwitch();
+            handleScrollers();
+            handleSelect2();
+            handleFancybox();
+            handleDropdowns();
+            handleTooltips();
+            handlePopovers();
+            handleAccordions();
+            handleBootstrapConfirmation();
         },
 
-        //init main components
         initComponents: function() {
             this.initAjax();
         },
 
-        //public function to remember last opened popover that needs to be closed on click
         setLastPopedPopover: function(el) {
             lastPopedPopover = el;
         },
 
-        //public function to add callback a function which will be called on window resize
         addResizeHandler: function(func) {
             resizeHandlers.push(func);
         },
 
-        //public functon to call _runresizeHandlers
         runResizeHandlers: function() {
             _runResizeHandlers();
         },
@@ -743,7 +732,6 @@ var App = function() {
             });
         },
 
-        // function to scroll to the top
         scrollTop: function() {
             App.scrollTo();
         },
@@ -884,7 +872,6 @@ var App = function() {
             return id;
         },
 
-        //public function to initialize the fancybox plugin
         initFancybox: function() {
             handleFancybox();
         },
@@ -941,22 +928,18 @@ var App = function() {
             return 'prefix_' + Math.floor(Math.random() * (new Date()).getTime());
         },
 
-        // check IE8 mode
         isIE8: function() {
             return isIE8;
         },
 
-        // check IE9 mode
         isIE9: function() {
             return isIE9;
         },
 
-        //check RTL mode
         isRTL: function() {
             return isRTL;
         },
 
-        // check IE8 mode
         isAngularJsApp: function() {
             return (typeof angular == 'undefined') ? false : true;
         },
@@ -1013,8 +996,6 @@ var App = function() {
 
 }();
 
-<!-- END THEME LAYOUT SCRIPTS -->
-
 jQuery(document).ready(function() {
-   App.init(); 
+   App.init();
 });

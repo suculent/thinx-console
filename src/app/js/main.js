@@ -21,7 +21,7 @@ var RTM = angular.module("RTM", [
 
 RTM.config(['RollbarProvider', function(RollbarProvider) {
   RollbarProvider.init({
-    accessToken: "d041448fab6b429db22f8beacc5f99b3",
+    accessToken: "<ENV::rollbarAccessToken>",
     captureUncaught: true,
     payload: {
       environment: 'development'
@@ -38,14 +38,8 @@ RTM.config(['$ocLazyLoadProvider', function($ocLazyLoadProvider) {
 
 //AngularJS v1.3.x workaround for old style controller declarition in HTML
 RTM.config(['$controllerProvider', function($controllerProvider) {
-  // this option might be handy for migrating old apps, but please don't use it
-  // in new ones!
   $controllerProvider.allowGlobals();
 }]);
-
-/********************************************
-END: BREAKING CHANGE in AngularJS v1.3.x:
-*********************************************/
 
 /* Setup global settings */
 RTM.factory('settings', ['$rootScope', function($rootScope) {
@@ -181,7 +175,6 @@ RTM.factory('settings', ['$rootScope', function($rootScope) {
         "important_notifications": null
       },
       goals: [],
-      // ['apikey','enroll', 'enroll-setup','rsakey','deploykey','source','update','build','profile-privacy','profile-avatar']
       username: '',
       owner: '',
       tags: [],
@@ -373,13 +366,10 @@ RTM.filter('objFilter', function() {
 angular.module('RTM').filter('propsFilter', function() {
   return function(items, props) {
     var out = [];
-
     if (angular.isArray(items)) {
       var keys = Object.keys(props);
-
       items.forEach(function(item) {
         var itemMatches = false;
-
         for (var i = 0; i < keys.length; i++) {
           var prop = keys[i];
           var text = props[prop].toLowerCase();
@@ -388,7 +378,6 @@ angular.module('RTM').filter('propsFilter', function() {
             break;
           }
         }
-
         if (itemMatches) {
           out.push(item);
         }
@@ -397,7 +386,6 @@ angular.module('RTM').filter('propsFilter', function() {
       // Let the output be the input untouched
       out = items;
     }
-
     return out;
   };
 });
@@ -415,17 +403,13 @@ RTM.filter('removeControlChars', function() {
   };
 });
 
-/* Setup App Main Controller */
+/* Main Controller */
 RTM.controller('AppController', ['$scope', '$rootScope', 'webNotification', 'Rollbar', function($scope, $rootScope, $webNotification, Rollbar) {
   $scope.$on('$viewContentLoaded', function() {
-
     console.log('checking user credentials...');
     console.log(
       document.cookie
     );
-
-    //App.initComponents(); // init core components
-    //Layout.init(); //  Init entire layout(header, footer, sidebar, etc) on page load if the partials included in server side instead of loading with ng-include directive
   });
 }]);
 
@@ -445,21 +429,13 @@ function getCookie(name) {
       end = dc.length;
     }
   }
-  // because unescape has been deprecated, replaced with decodeURI
-  //return unescape(dc.substring(begin + prefix.length, end));
   return decodeURI(dc.substring(begin + prefix.length, end));
 }
 
-/***
-Layout Partials.
-By default the partials are loaded through AngularJS ng-include directive. In case they loaded in server side(e.g: PHP include function) then below partial
-initialization can be disabled and Layout.init() should be called on page load complete as explained above.
-***/
-
-/* Setup Layout Part - Header */
+/* Header */
 RTM.controller('HeaderController', ['$scope', '$rootScope', function($scope, $rootScope) {
   $scope.$on('$includeContentLoaded', function() {
-    Layout.initHeader(); // init header
+    Layout.initHeader();
   });
 
   $rootScope.getDeviceByUdid = function(deviceUdid) {
@@ -555,7 +531,7 @@ RTM.controller('FooterController', ['$scope', function($scope) {
 }]);
 
 
-/* Setup Rounting For All Pages */
+/* Router */
 RTM.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
   // Redirect any unmatched url
   $urlRouterProvider.otherwise("/dashboard");
@@ -572,7 +548,7 @@ RTM.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       deps: ['$ocLazyLoad', function($ocLazyLoad) {
         return $ocLazyLoad.load({
           name: 'RTM',
-          insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+          insertBefore: '#ng_load_plugins_before',
           files: [
             '../assets/global/plugins/morris/morris.css',
             '../assets/global/plugins/morris/morris.min.js',
@@ -607,7 +583,7 @@ RTM.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       deps: ['$ocLazyLoad', function($ocLazyLoad) {
         return $ocLazyLoad.load({
           name: 'RTM',
-          insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+          insertBefore: '#ng_load_plugins_before',
           files: [
             '../assets/thinx/js/plugins/ui-select/select.min.css',
             '../assets/thinx/js/plugins/ui-select/select.min.js',
@@ -638,7 +614,7 @@ RTM.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       deps: ['$ocLazyLoad', function($ocLazyLoad) {
         return $ocLazyLoad.load({
           name: 'RTM',
-          insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+          insertBefore: '#ng_load_plugins_before',
           files: [
             '../assets/thinx/js/plugins/ui-select/select.min.css',
             '../assets/thinx/js/plugins/ui-select/select.min.js',
@@ -672,7 +648,7 @@ RTM.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       deps: ['$ocLazyLoad', function($ocLazyLoad) {
         return $ocLazyLoad.load({
           name: 'RTM',
-          insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+          insertBefore: '#ng_load_plugins_before',
           files: [
             '../assets/global/plugins/clipboardjs/clipboard.min.js',
             'js/thinx-api.js',
@@ -694,7 +670,7 @@ RTM.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       deps: ['$ocLazyLoad', function($ocLazyLoad) {
         return $ocLazyLoad.load({
           name: 'RTM',
-          insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+          insertBefore: '#ng_load_plugins_before',
           files: [
             'js/thinx-api.js',
             'js/controllers/SourceController.js',
@@ -716,7 +692,7 @@ RTM.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       deps: ['$ocLazyLoad', function($ocLazyLoad) {
         return $ocLazyLoad.load({
           name: 'RTM',
-          insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+          insertBefore: '#ng_load_plugins_before',
           files: [
             'js/thinx-api.js',
             'js/controllers/RsakeyController.js',
@@ -738,7 +714,7 @@ RTM.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       deps: ['$ocLazyLoad', function($ocLazyLoad) {
         return $ocLazyLoad.load({
           name: 'RTM',
-          insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+          insertBefore: '#ng_load_plugins_before',
           files: [
             '../assets/global/plugins/clipboardjs/clipboard.min.js',
             'js/thinx-api.js',
@@ -760,7 +736,7 @@ RTM.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       deps: ['$ocLazyLoad', function($ocLazyLoad) {
         return $ocLazyLoad.load({
           name: 'RTM',
-          insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+          insertBefore: '#ng_load_plugins_before',
           files: [
             'js/thinx-api.js',
             'js/controllers/EnviroController.js',
@@ -781,7 +757,7 @@ RTM.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       deps: ['$ocLazyLoad', function($ocLazyLoad) {
         return $ocLazyLoad.load({
           name: 'RTM',
-          insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+          insertBefore: '#ng_load_plugins_before',
           files: [
             'js/thinx-api.js',
             'js/controllers/TransformerController.js',
@@ -809,7 +785,7 @@ RTM.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       deps: ['$ocLazyLoad', function($ocLazyLoad) {
         return $ocLazyLoad.load({
           name: 'RTM',
-          insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+          insertBefore: '#ng_load_plugins_before',
           files: [
             '../assets/global/plugins/component-todo/css/todo.min.css',
             '../assets/global/plugins/component-todo/scripts/todo.min.js',
@@ -832,7 +808,7 @@ RTM.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       deps: ['$ocLazyLoad', function($ocLazyLoad) {
         return $ocLazyLoad.load({
           name: 'RTM',
-          insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+          insertBefore: '#ng_load_plugins_before',
           files: [
             '../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css',
             '../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css',
@@ -897,7 +873,7 @@ RTM.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       deps: ['$ocLazyLoad', function($ocLazyLoad) {
         return $ocLazyLoad.load({
           name: 'RTM',
-          insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+          insertBefore: '#ng_load_plugins_before',
           files: [
             'js/controllers/BlankController.js'
           ]
@@ -910,8 +886,8 @@ RTM.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 
 /* Init global settings and run the app */
 RTM.run(["$rootScope", "settings", "$state", function($rootScope, settings, $state) {
-  $rootScope.$state = $state; // state to be accessed from view
-  $rootScope.$settings = settings; // state to be accessed from view
+  $rootScope.$state = $state;
+  $rootScope.$settings = settings;
 }]);
 
 RTM.run(function(editableOptions,editableThemes) {
