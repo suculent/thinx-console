@@ -6,7 +6,7 @@ var prettify = require('gulp-prettify');
 var minifyCss = require("gulp-minify-css");
 var rename = require("gulp-rename");
 let uglify = require('gulp-uglify-es').default;
-var util = require('gulp-util');
+var noop = require('gulp-noop');
 
 var injectEnvs = require('gulp-inject-envs');
 var removeCode = require('gulp-remove-code');
@@ -74,10 +74,10 @@ gulp.task('build', function() {
     .pipe(debug({minimal: true}))
     .pipe(removeCode(removeCodeVars))
     .pipe(injectEnvs(env))
-    .pipe( isProduction ? uglify().on('error',function(e){console.log(e);}) : util.noop() )
-    .pipe( isProduction ? rename({suffix: '.min'}) : util.noop() );
+    .pipe( isProduction ? uglify().on('error',function(e){console.log(e);}) : noop() )
+    .pipe( isProduction ? rename({suffix: '.min'}) : noop() );
 
-  compiled_all_js.pipe( makeBundle ? concat('bundle.js') : util.noop() )
+  compiled_all_js.pipe( makeBundle ? concat('bundle.js') : noop() )
     .pipe(gulp.dest(target));
 
   // CSS
@@ -93,10 +93,10 @@ gulp.task('build', function() {
     .pipe(debug({minimal: true}))
     .pipe(removeCode(removeCodeVars))
     .pipe(injectEnvs(env))
-    .pipe( isProduction ? minifyCss() : util.noop() )
-    .pipe( isProduction ? rename({suffix: '.min'}) : util.noop() );
+    .pipe( isProduction ? minifyCss() : noop() )
+    .pipe( isProduction ? rename({suffix: '.min'}) : noop() );
 
-  compiled_all_css.pipe( makeBundle ? concat('bundle.css') : util.noop() )
+  compiled_all_css.pipe( makeBundle ? concat('bundle.css') : noop() )
     .pipe(gulp.dest(target));
 
   // HTML
@@ -202,9 +202,9 @@ gulp.task('buildPublic', function() {
     .pipe(removeCode(removeCodeVars))
     .pipe(injectEnvs(env));
 
-  compiled_public_js.pipe( makeBundle ? concat('bundle.js') : util.noop() )
-    .pipe( isProduction ? uglify().on('error',function(e){console.log(e);}) : util.noop() )
-    .pipe( isProduction ? rename({suffix: '.min'}) : util.noop() )
+  compiled_public_js.pipe( makeBundle ? concat('bundle.js') : noop() )
+    .pipe( isProduction ? uglify().on('error',function(e){console.log(e);}) : noop() )
+    .pipe( isProduction ? rename({suffix: '.min'}) : noop() )
     .pipe(gulp.dest(target + '/public'));
 
   // CSS
@@ -226,9 +226,9 @@ gulp.task('buildPublic', function() {
     .pipe(removeCode(removeCodeVars))
     .pipe(injectEnvs(env));
 
-  compiled_public_css.pipe( makeBundle ? concat('bundle.css') : util.noop() )
-    .pipe( isProduction ? minifyCss() : util.noop() )
-    .pipe( isProduction ? rename({suffix: '.min'}) : util.noop() )
+  compiled_public_css.pipe( makeBundle ? concat('bundle.css') : noop() )
+    .pipe( isProduction ? minifyCss() : noop() )
+    .pipe( isProduction ? rename({suffix: '.min'}) : noop() )
     .pipe(gulp.dest(target + '/public'));
 
   // HTML
