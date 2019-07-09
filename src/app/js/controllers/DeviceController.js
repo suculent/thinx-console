@@ -353,7 +353,7 @@ angular.module('RTM').controller('DeviceController', ['$rootScope', '$scope', '$
             }
           }
 
-          var buildToast = toastr.info(
+          toastr.info(
             response.status + '<br><br>Click to show build log...',
             'THiNX Builder',
             {

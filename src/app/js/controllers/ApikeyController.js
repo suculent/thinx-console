@@ -80,7 +80,7 @@ angular.module('RTM').controller('ApikeyController', ['$rootScope', '$scope', 's
       } else {
         console.log('error');
         console.log(response);
-        toastr.error('Apikey creation failed.', '<ENV::loginPageTitle>', {timeOut: 5000})
+        toastr.error('Apikey creation failed.', '<ENV::loginPageTitle>', {timeOut: 5000});
       }
     })
     .fail(function(error) {
