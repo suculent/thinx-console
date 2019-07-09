@@ -1305,7 +1305,7 @@ var __module10__ = (function(__dependency1__) {
           for (var j=0; j<opcode.args.length; j++) {
             param = opcode.args[j];
             if (typeof param === "string") {
-              param = "\"" + param.replace("\n", "\\n") + "\"";
+              param = "\"" + param.replace(/\n/g, "\\n") + "\"";
             }
             params.push(param);
           }
