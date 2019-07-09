@@ -145,11 +145,11 @@ angular.module('RTM').controller('DashboardController', ['$rootScope', '$scope',
         var totalCheckins = 0;
         var totalErrors = 0;
         if (typeof(checkinsByDate[dateArr[day]]) !== "undefined") {
-          totalCheckins = checkinsByDate[dateArr[day]]
+          totalCheckins = checkinsByDate[dateArr[day]];
           $rootScope.stats.total.RANGE_CHECKINS += totalCheckins;
         }
         if (typeof(errorsByDate[dateArr[day]]) !== "undefined") {
-          totalErrors = errorsByDate[dateArr[day]]
+          totalErrors = errorsByDate[dateArr[day]];
           $rootScope.stats.total.RANGE_ERRORS += totalErrors;
         }
         chartData.push({

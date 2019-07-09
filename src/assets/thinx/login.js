@@ -74,8 +74,6 @@ var Login = function() {
                 console.log('-- Error!');
                 if (response.status == "password_mismatch") {
                   $('#login-error').text("Username or password does not match");
-                } else if (response.status == "password_mismatch") {
-                  $('#login-error').text("Username or password does not match");
                 } else if (response.status == 'user_not_found') {
                   $('#login-error').text("User not found.");
                 } else if (response.status == 'activated_user_not_found') {

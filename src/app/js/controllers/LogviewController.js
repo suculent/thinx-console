@@ -44,7 +44,7 @@ angular.module('RTM').controller('LogviewController', ['$rootScope', '$scope', '
       }
     } else {
       // The browser doesn't support WebSocket
-      toastr.error("Error", "WebSocket NOT supported by your Browser!", {timeOut: 5000})
+      toastr.error("Error", "WebSocket NOT supported by your Browser!", {timeOut: 5000});
     }
   }
 
@@ -109,7 +109,7 @@ angular.module('RTM').controller('LogviewController', ['$rootScope', '$scope', '
       console.log('Socket ready, tailing log...');
       $rootScope.wsstailLog(build_id);
     } else {
-      console.log('Socket not ready, trying to open it...')
+      console.log('Socket not ready, trying to open it...');
       openSocket();
     }
   }

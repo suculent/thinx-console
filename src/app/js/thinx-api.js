@@ -168,7 +168,7 @@ function init($rootScope, $scope) {
   function updateSources(data) {
     var response = JSON.parse(data);
 
-    if (typeof(response.success !== "undefined") && response.success) {
+    if (typeof(response.success) !== "undefined" && response.success) {
       $rootScope.sources = [];
       $.each(response.sources, function(sourceId, value) {
         value.sourceId = sourceId;
@@ -372,7 +372,7 @@ function init($rootScope, $scope) {
 
     console.log("profile tags", $rootScope.profile.info.tags);
 
-    for (var index in $rootScope.devices) {
+    for (let index in $rootScope.devices) {
       var tagsArray = $rootScope.devices[index].tags;
       // console.log("device tags", tagsArray);
       if (tagsArray !== null) {
@@ -491,7 +491,7 @@ function init($rootScope, $scope) {
   function updateRawTransformers(transformers) {
     // decode all transformers
     console.log('Decoding Transformers...');
-    for (var index in transformers) {
+    for (let index in transformers) {
       $rootScope.meta.transformers[transformers[index].utid] =
       {
         "utid": transformers[index].utid,
@@ -518,7 +518,7 @@ function init($rootScope, $scope) {
     console.log('/////// auditHistory response:');
     //console.log(response);
 
-    if (typeof(response.success !== "undefined") && response.success) {
+    if (typeof(response.success) !== "undefined" && response.success) {
       $rootScope.auditlog = response.logs;
       console.log('refreshing view...');
       if (typeof($scope.chartRange) !== "undefined") {
@@ -527,7 +527,7 @@ function init($rootScope, $scope) {
 
       var totalErrors = 0;
       var errorTimeline = {};
-      for ( var index in $rootScope.auditlog) {
+      for ( let index in $rootScope.auditlog) {
         if (typeof($rootScope.auditlog[index].message) !== "undefined") {
           if ($rootScope.auditlog[index].message.match(warningStr) !== null) {
             $rootScope.auditlog[index].flags.push('warning');
@@ -606,7 +606,7 @@ function init($rootScope, $scope) {
   function updateBuildHistory(data) {
     var response = JSON.parse(data);
 
-    if (typeof(response.success !== "undefined") && response.success) {
+    if (typeof(response.success) !== "undefined" && response.success) {
       console.log('buildHistory list length:', response.builds.length);
       $rootScope.buildHistory = response.builds;
 
@@ -614,7 +614,7 @@ function init($rootScope, $scope) {
       $rootScope.meta.deviceBuilds = {};
 
       console.log('Grouping Build Entries...');
-      for (index in response.builds) {
+      for (let index in response.builds) {
         // reset device build history
         if (typeof($rootScope.meta.deviceBuilds[response.builds[index].udid]) == 'undefined') {
           $rootScope.meta.deviceBuilds[response.builds[index].udid] = [];
@@ -632,7 +632,7 @@ function init($rootScope, $scope) {
       }
 
       // sort device build entries by date
-      for (var index in $rootScope.meta.deviceBuilds) {
+      for (let index in $rootScope.meta.deviceBuilds) {
         $rootScope.meta.deviceBuilds[index].sort(sortByDate);
       }
 
@@ -741,7 +741,7 @@ function transferDevices(transferForm, deviceUdids) {
 
 function pushConfig(configForm, deviceUdids) {
   var enabledEnviros = [];
-  for (var index in configForm.enviros) {
+  for (let index in configForm.enviros) {
     if (configForm.enviros[index]) {
       enabledEnviros.push(index);
     }

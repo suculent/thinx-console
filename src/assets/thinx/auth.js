@@ -190,7 +190,7 @@ var Auth = function() {
 jQuery(document).ready(function() {
   (function($){
     $.getQuery = function( query ) {
-      query = query.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+      query = query.replace(/[\[]/g,"\\\[").replace(/[\]]/g,"\\\]");
       var expr = "[\\?&]"+query+"=([^&#]*)";
       var regex = new RegExp( expr );
       var results = regex.exec( window.location.href );

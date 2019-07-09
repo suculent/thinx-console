@@ -690,7 +690,7 @@
                     }
                 }
                 if (column.width && typeof column.width === 'string') {
-                    width = column.width.replace('%', '').replace('px', '');
+                    width = column.width.replace(/%/g, "''").replace(/px/g, "''");
                 }
 
                 halign = sprintf('text-align: %s; ', column.halign ? column.halign : column.align);

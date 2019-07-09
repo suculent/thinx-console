@@ -45,7 +45,7 @@ angular.module('RTM').controller('EnviroController', ['$rootScope', '$scope', 's
       console.log("Looping enviros: alias/name", $rootScope.enviros[enviroId]);
 
       if ($rootScope.enviros[enviroId] == $scope.enviroName) {
-        toastr.error('Name must be unique.', '<ENV::loginPageTitle>', {timeOut: 5000})
+        toastr.error('Name must be unique.', '<ENV::loginPageTitle>', {timeOut: 5000});
         return;
       }
     }
@@ -101,13 +101,13 @@ angular.module('RTM').controller('EnviroController', ['$rootScope', '$scope', 's
         $scope.selectedItems = [];
         Thinx.enviroList()
         .done( function(data) {
-          toastr.success('Deleted.', '<ENV::loginPageTitle>', {timeOut: 5000})
+          toastr.success('Deleted.', '<ENV::loginPageTitle>', {timeOut: 5000});
           updateEnviros(data);
         })
         .fail(error => console.log('Error:', error));
 
       } else {
-        toastr.error('Delete failed.', '<ENV::loginPageTitle>', {timeOut: 5000})
+        toastr.error('Delete failed.', '<ENV::loginPageTitle>', {timeOut: 5000});
       }
     })
     .fail(function (error) {
@@ -124,7 +124,7 @@ angular.module('RTM').controller('EnviroController', ['$rootScope', '$scope', 's
     if (selectedToRevoke.length > 0) {
       revokeEnviros(selectedToRevoke);
     } else {
-      toastr.warning('Nothing selected.', '<ENV::loginPageTitle>', {timeOut: 1000})
+      toastr.warning('Nothing selected.', '<ENV::loginPageTitle>', {timeOut: 1000});
     }
   };
 

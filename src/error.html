@@ -96,10 +96,10 @@ $(document).ready(function() {
   } else {
     $('.msg-success').hide();
     if ($.urlParam('reason') !== undefined) {
-      $('.error-reason').html($.urlParam('reason'));
+      $('.error-reason').text($.urlParam('reason'));
     }
     if ($.urlParam('title') != undefined) {
-      $('.error-title').html($.urlParam('title'));
+      $('.error-title').text($.urlParam('title'));
     }
   };
 })
