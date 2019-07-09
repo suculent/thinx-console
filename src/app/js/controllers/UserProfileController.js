@@ -41,10 +41,10 @@ angular.module('RTM').controller('UserProfileController', function($rootScope, $
           })
           .fail(error => console.log('Error:', error));
 
-          toastr.success('Profile updated.', '<ENV::loginPageTitle>', {timeOut: 5000})
+          toastr.success('Profile updated.', '<ENV::loginPageTitle>', {timeOut: 5000});
         } else {
           console.log(response);
-          toastr.error('Profile Update Failed.', '<ENV::loginPageTitle>', {timeOut: 5000})
+          toastr.error('Profile Update Failed.', '<ENV::loginPageTitle>', {timeOut: 5000});
         }
       } else {
         console.log('error');
@@ -54,7 +54,7 @@ angular.module('RTM').controller('UserProfileController', function($rootScope, $
     })
     .fail(function(error) {
       console.error('Error:', error);
-      toastr.error('Profile Update Failed Badly.', '<ENV::loginPageTitle>', {timeOut: 5000})
+      toastr.error('Profile Update Failed Badly.', '<ENV::loginPageTitle>', {timeOut: 5000});
     });
   };
 
@@ -111,10 +111,10 @@ angular.module('RTM').controller('UserProfileController', function($rootScope, $
           })
           .fail(error => console.log('Error:', error));
 
-          toastr.success('Avatar updated.', '<ENV::loginPageTitle>', {timeOut: 5000})
+          toastr.success('Avatar updated.', '<ENV::loginPageTitle>', {timeOut: 5000});
         } else {
           console.log(response);
-          toastr.error('Avatar Update Failed.', '<ENV::loginPageTitle>', {timeOut: 5000})
+          toastr.error('Avatar Update Failed.', '<ENV::loginPageTitle>', {timeOut: 5000});
         }
       } else {
         console.log('error');
@@ -123,7 +123,7 @@ angular.module('RTM').controller('UserProfileController', function($rootScope, $
     })
     .fail(function(error) {
       console.error('Error:', error);
-      toastr.error('Avatar Update Failed Badly.', '<ENV::loginPageTitle>', {timeOut: 5000})
+      toastr.error('Avatar Update Failed Badly.', '<ENV::loginPageTitle>', {timeOut: 5000});
     });
 
   }
@@ -176,7 +176,7 @@ angular.module('RTM').controller('UserProfileController', function($rootScope, $
            }
         } else {
           console.log(response);
-          toastr.error('Profile Download Failed.', '<ENV::loginPageTitle>', {timeOut: 5000})
+          toastr.error('Profile Download Failed.', '<ENV::loginPageTitle>', {timeOut: 5000});
         }
       } else {
         console.log('error');
@@ -185,7 +185,7 @@ angular.module('RTM').controller('UserProfileController', function($rootScope, $
     })
     .fail(function(error) {
       console.error('Error:', error);
-      toastr.error('Profile Download Failed Badly.', '<ENV::loginPageTitle>', {timeOut: 5000})
+      toastr.error('Profile Download Failed Badly.', '<ENV::loginPageTitle>', {timeOut: 5000});
     });
   };
 
@@ -205,7 +205,7 @@ angular.module('RTM').controller('UserProfileController', function($rootScope, $
           window.location = Thinx.baseUrl() + "/logout";
         } else {
           console.log(response);
-          toastr.error('User Delete Failed.', '<ENV::loginPageTitle>', {timeOut: 5000})
+          toastr.error('User Delete Failed.', '<ENV::loginPageTitle>', {timeOut: 5000});
         }
       } else {
         console.log('error');
@@ -214,7 +214,7 @@ angular.module('RTM').controller('UserProfileController', function($rootScope, $
     })
     .fail(function(error) {
       console.error('Error:', error);
-      toastr.error('User Delete Failed Badly.', '<ENV::loginPageTitle>', {timeOut: 5000})
+      toastr.error('User Delete Failed Badly.', '<ENV::loginPageTitle>', {timeOut: 5000});
     });
   };
 
@@ -233,11 +233,11 @@ angular.module('RTM').controller('UserProfileController', function($rootScope, $
       if (typeof(response) !== "undefined") {
         if (typeof(response.success) !== "undefined" && response.success) {
           console.log(response);
-          toastr.success('Message sent.', '<ENV::loginPageTitle>', {timeOut: 5000})
+          toastr.success('Message sent.', '<ENV::loginPageTitle>', {timeOut: 5000});
           $scope.messageForm.text = null;
         } else {
           console.log(response);
-          toastr.error('Message Submit Failed.', '<ENV::loginPageTitle>', {timeOut: 5000})
+          toastr.error('Message Submit Failed.', '<ENV::loginPageTitle>', {timeOut: 5000});
         }
       } else {
         console.log('error');
@@ -246,7 +246,7 @@ angular.module('RTM').controller('UserProfileController', function($rootScope, $
     })
     .fail(function(error) {
       console.error('Error:', error);
-      toastr.error('Message Submit Failed Badly.', '<ENV::loginPageTitle>', {timeOut: 5000})
+      toastr.error('Message Submit Failed Badly.', '<ENV::loginPageTitle>', {timeOut: 5000});
     });
   };
 

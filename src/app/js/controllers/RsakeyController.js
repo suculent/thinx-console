@@ -36,7 +36,7 @@ angular.module('RTM').controller('RsakeyController', ['$rootScope', '$scope', 's
       console.log("Looping rsakeys: alias/name", $rootScope.rsakeys[rsakeyId].name, "fingerprint", $rootScope.rsakeys[rsakeyId].fingerprint);
 
       if ($rootScope.rsakeys[rsakeyId].name == $scope.rsakeyAlias) {
-        toastr.error('Alias must be unique.', '<ENV::loginPageTitle>', {timeOut: 5000})
+        toastr.error('Alias must be unique.', '<ENV::loginPageTitle>', {timeOut: 5000});
         return;
       }
     }
@@ -89,7 +89,7 @@ angular.module('RTM').controller('RsakeyController', ['$rootScope', '$scope', 's
     .done(function(data) {
       if (data.success) {
         console.log('Success:', data);
-        toastr.success('Deleted.', '<ENV::loginPageTitle>', {timeOut: 5000})
+        toastr.success('Deleted.', '<ENV::loginPageTitle>', {timeOut: 5000});
 
         $scope.selectedItems = [];
 
@@ -101,7 +101,7 @@ angular.module('RTM').controller('RsakeyController', ['$rootScope', '$scope', 's
         .fail(error => $scope.$emit("xhrFailed", error));
 
       } else {
-        toastr.error('Revocation failed.', '<ENV::loginPageTitle>', {timeOut: 5000})
+        toastr.error('Revocation failed.', '<ENV::loginPageTitle>', {timeOut: 5000});
       }
     })
     .fail(error => $scope.$emit("xhrFailed", error));
@@ -115,7 +115,7 @@ angular.module('RTM').controller('RsakeyController', ['$rootScope', '$scope', 's
     if (selectedToRevoke.length > 0) {
       revokeRsakeys(selectedToRevoke);
     } else {
-      toastr.warning('Nothing selected.', '<ENV::loginPageTitle>', {timeOut: 1000})
+      toastr.warning('Nothing selected.', '<ENV::loginPageTitle>', {timeOut: 1000});
     }
   };
 
