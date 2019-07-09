@@ -87,7 +87,7 @@ angular.module('RTM').controller('DeviceController', ['$rootScope', '$scope', '$
 
     console.log("Timezones by UTC:", timezones_by_utc);
     return timezones_by_utc;
-  };
+  }
 
 
   function getUTCWithOffset() {
@@ -96,7 +96,7 @@ angular.module('RTM').controller('DeviceController', ['$rootScope', '$scope', '$
     console.log(new_utc + '<br>');
     console.log(utc_with_offset + '<br>');
     return utc_with_offset;
-  };
+  }
 
   var formBeforeEdit = JSON.parse(JSON.stringify($scope.deviceForm));
 
@@ -259,10 +259,10 @@ angular.module('RTM').controller('DeviceController', ['$rootScope', '$scope', '$
     // $scope.$emit("updateRawTransformers", $rootScope.profile.info.transformers);
 
     // remove from profile
-    for (var index in $rootScope.profile.info.transformers) {
-      if ($rootScope.profile.info.transformers[index].utid == utid) {
-        console.log("profile transformer to delete", $rootScope.profile.info.transformers[index]);
-        $rootScope.profile.info.transformers.splice(index,1);
+    for (var t in $rootScope.profile.info.transformers) {
+      if ($rootScope.profile.info.transformers[t].utid == utid) {
+        console.log("profile transformer to delete", $rootScope.profile.info.transformers[t]);
+        $rootScope.profile.info.transformers.splice(t,1);
       }
     }
     $scope.$emit("saveProfileChanges", ["transformers"]);
@@ -272,7 +272,7 @@ angular.module('RTM').controller('DeviceController', ['$rootScope', '$scope', '$
   $scope.transformerSelected = function(transformer) {
     console.log('-- new transformer --', transformer);
 
-    if (typeof(transformer.value.utid) !== 'undefied') {
+    if (typeof(transformer.value.utid) !== 'undefined') {
       // if transformer dowsnt exist yet, create it
       if (!$rootScope.getTransformerByUtid(transformer.value.utid)) {
         $rootScope.profile.info.transformers.push({
@@ -285,7 +285,7 @@ angular.module('RTM').controller('DeviceController', ['$rootScope', '$scope', '$
       } else {
         console.log(typeof($rootScope.getTransformerByUtid(transformer.value.utid)));
       }
-    };
+    }
   };
 
   function generateUtid() {
@@ -541,7 +541,7 @@ angular.module('RTM').controller('DeviceController', ['$rootScope', '$scope', '$
       'ng-disabled="$select.disabled" ' +
       'ng-class="{\'btn-primary\':$selectMultiple.activeMatchIndex === $index, \'select-locked\':$select.isLocked(this, $index)}" ' +
       'ui-select-sort="$select.selected">' +
-      '<i class=\"fa fa-pencil\"></i>' +
+      '<i class="fa fa-pencil"></i>' +
     '</span>' +
       '<span ' +
         // 'ng-click="$selectMultiple.removeChoice($index)" ' +
