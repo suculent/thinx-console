@@ -95,7 +95,7 @@ $(document).ready(function() {
 
   if ($.urlParam('success') == 'true') {
     $('.msg-error').hide();
-    $('.device-transfer-reason').html($.urlParam('reason'));
+    $('.device-transfer-reason').text($.urlParam('reason'));
   } else {
     $('.msg-success').hide();
   };
