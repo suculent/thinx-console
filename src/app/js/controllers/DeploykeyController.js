@@ -74,7 +74,7 @@ angular.module('RTM').controller('DeploykeyController', ['$rootScope', '$scope',
     .done(function(data) {
       if (data.success) {
         console.log('Success:', data);
-        toastr.success('Deleted.', '<ENV::loginPageTitle>', {timeOut: 5000})
+        toastr.success('Deleted.', '<ENV::loginPageTitle>', {timeOut: 5000});
 
         $scope.selectedItems = [];
 
@@ -86,7 +86,7 @@ angular.module('RTM').controller('DeploykeyController', ['$rootScope', '$scope',
         .fail(error => $scope.$emit("xhrFailed", error));
 
       } else {
-        toastr.error('Revocation failed.', '<ENV::loginPageTitle>', {timeOut: 5000})
+        toastr.error('Revocation failed.', '<ENV::loginPageTitle>', {timeOut: 5000});
       }
     })
     .fail(error => $scope.$emit("xhrFailed", error));
@@ -100,7 +100,7 @@ angular.module('RTM').controller('DeploykeyController', ['$rootScope', '$scope',
     if (selectedToRevoke.length > 0) {
       revokeDeploykeys(selectedToRevoke);
     } else {
-      toastr.warning('Nothing selected.', '<ENV::loginPageTitle>', {timeOut: 1000})
+      toastr.warning('Nothing selected.', '<ENV::loginPageTitle>', {timeOut: 1000});
     }
   };
 

@@ -233,7 +233,7 @@
       <label class="control-label col-md-3">Build Status</label>
       <div class="col-md-9">
 
-        <div ng-if="$root.meta.deviceBuilds[deviceForm.udid] !== undefined" ng-click="deviceForm.buildHistoryVisible ? deviceForm.buildHistoryVisible = false : deviceForm.buildHistoryVisible = true" class="device-build-status" ng-if="$root.meta.deviceBuilds[deviceForm.udid].length > 0">
+        <div ng-click="deviceForm.buildHistoryVisible ? deviceForm.buildHistoryVisible = false : deviceForm.buildHistoryVisible = true" class="device-build-status" ng-if="$root.meta.deviceBuilds[deviceForm.udid] != undefined && $root.meta.deviceBuilds[deviceForm.udid].length > 0">
           <div class="row">
             <div class="col-xs-6 text-left">
               <i class="fa fa-cog" ng-class="meta.deviceBuilds[deviceForm.udid][0].message == 'OK' ? '' : 'fa-spin'"></i> <span class="badge" ng-class="meta.deviceBuilds[deviceForm.udid][0].message == 'OK' ? 'badge-success' : 'badge-warning'">{{meta.deviceBuilds[deviceForm.udid][0].message}}</span>
@@ -376,8 +376,8 @@
       <label class="control-label col-md-3">Location</label>
       <div class="col-md-9">
         <div>
-          <a href="https://www.google.com/maps/dir/?api=1&destination={{$root.getDeviceByUdid(deviceForm.udid).lat}},{{$root.getDeviceByUdid(deviceForm.udid).lon}}" target="_blank">
-            <img class="location-map-image" src="https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyAo8wftesNw_ebhZSVQTnzqhQbUJx_k4GI&center={{$root.getDeviceByUdid(deviceForm.udid).lat}},{{$root.getDeviceByUdid(deviceForm.udid).lon}}&amp;size=600x120&amp;sensor=false&amp;zoom=10&amp;markers=color:red%7Clabel:%7C{{$root.getDeviceByUdid(deviceForm.udid).lat}},{{$root.getDeviceByUdid(deviceForm.udid).lon}}" />
+          <a ng-href="https://www.google.com/maps/dir/?api=1&destination={{$root.getDeviceByUdid(deviceForm.udid).lat}},{{$root.getDeviceByUdid(deviceForm.udid).lon}}" target="_blank">
+            <img class="location-map-image" ng-src="https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyAo8wftesNw_ebhZSVQTnzqhQbUJx_k4GI&center={{$root.getDeviceByUdid(deviceForm.udid).lat}},{{$root.getDeviceByUdid(deviceForm.udid).lon}}&amp;size=600x120&amp;sensor=false&amp;zoom=10&amp;markers=color:red%7Clabel:%7C{{$root.getDeviceByUdid(deviceForm.udid).lat}},{{$root.getDeviceByUdid(deviceForm.udid).lon}}" />
           </a>
         </div>
       </div>

@@ -87,7 +87,7 @@ angular.module('RTM').controller('DeviceController', ['$rootScope', '$scope', '$
 
     console.log("Timezones by UTC:", timezones_by_utc);
     return timezones_by_utc;
-  };
+  }
 
 
   function getUTCWithOffset() {
@@ -96,7 +96,7 @@ angular.module('RTM').controller('DeviceController', ['$rootScope', '$scope', '$
     console.log(new_utc + '<br>');
     console.log(utc_with_offset + '<br>');
     return utc_with_offset;
-  };
+  }
 
   var formBeforeEdit = JSON.parse(JSON.stringify($scope.deviceForm));
 
@@ -118,10 +118,10 @@ angular.module('RTM').controller('DeviceController', ['$rootScope', '$scope', '$
           $scope.attachingSource = false;
           $scope.$apply();
 
-          toastr.success('Repository Attached.', '<ENV::loginPageTitle>', {timeOut: 5000})
+          toastr.success('Repository Attached.', '<ENV::loginPageTitle>', {timeOut: 5000});
         } else {
           console.log(response);
-          toastr.error('Attach Failed.', '<ENV::loginPageTitle>', {timeOut: 5000})
+          toastr.error('Attach Failed.', '<ENV::loginPageTitle>', {timeOut: 5000});
         }
       } else {
         console.log('error');
@@ -130,7 +130,7 @@ angular.module('RTM').controller('DeviceController', ['$rootScope', '$scope', '$
     })
     .fail(function(error) {
       console.error('Error:', error);
-      toastr.error('Attach Failed.', '<ENV::loginPageTitle>', {timeOut: 5000})
+      toastr.error('Attach Failed.', '<ENV::loginPageTitle>', {timeOut: 5000});
     });
 
   };
@@ -148,12 +148,12 @@ angular.module('RTM').controller('DeviceController', ['$rootScope', '$scope', '$
               $rootScope.devices[index].source = undefined;
             }
           }
-          toastr.success('Repository Detached.', '<ENV::loginPageTitle>', {timeOut: 5000})
+          toastr.success('Repository Detached.', '<ENV::loginPageTitle>', {timeOut: 5000});
           $scope.deviceForm.source = null;
           $scope.$apply()
         } else {
           console.log(response);
-          toastr.error('Detach Failed.', '<ENV::loginPageTitle>', {timeOut: 5000})
+          toastr.error('Detach Failed.', '<ENV::loginPageTitle>', {timeOut: 5000});
         }
       } else {
         console.log('error');
@@ -162,7 +162,7 @@ angular.module('RTM').controller('DeviceController', ['$rootScope', '$scope', '$
     })
     .fail(function(error) {
       console.error('Error:', error);
-      toastr.error('Detach Failed.', '<ENV::loginPageTitle>', {timeOut: 5000})
+      toastr.error('Detach Failed.', '<ENV::loginPageTitle>', {timeOut: 5000});
     });
   };
 
@@ -200,7 +200,7 @@ angular.module('RTM').controller('DeviceController', ['$rootScope', '$scope', '$
       if (typeof(response) !== "undefined") {
         if (typeof(response.success) !== "undefined" && response.success) {
           console.log(response);
-          toastr.success('Device settings updated.', '<ENV::loginPageTitle>', {timeOut: 5000})
+          toastr.success('Device settings updated.', '<ENV::loginPageTitle>', {timeOut: 5000});
 
           console.log('-- refreshing devices --');
 
@@ -215,7 +215,7 @@ angular.module('RTM').controller('DeviceController', ['$rootScope', '$scope', '$
 
         } else {
           console.log(response);
-          toastr.error('Device settings updated failed.', '<ENV::loginPageTitle>', {timeOut: 5000})
+          toastr.error('Device settings updated failed.', '<ENV::loginPageTitle>', {timeOut: 5000});
         }
       } else {
         console.log('error:');
@@ -225,7 +225,7 @@ angular.module('RTM').controller('DeviceController', ['$rootScope', '$scope', '$
     })
     .fail(function(error) {
       console.error('Error:', error);
-      toastr.error('Device settings update failed badly.', '<ENV::loginPageTitle>', {timeOut: 5000})
+      toastr.error('Device settings update failed badly.', '<ENV::loginPageTitle>', {timeOut: 5000});
     });
   };
 
@@ -254,15 +254,15 @@ angular.module('RTM').controller('DeviceController', ['$rootScope', '$scope', '$
 
     // remove from meta
     console.log("meta transformer to delete", $rootScope.meta.transformers[utid]);
-    delete($rootScope.meta.transformers[utid])
+    delete($rootScope.meta.transformers[utid]);
     console.log('meta', $rootScope.meta.transformers);
     // $scope.$emit("updateRawTransformers", $rootScope.profile.info.transformers);
 
     // remove from profile
-    for (var index in $rootScope.profile.info.transformers) {
-      if ($rootScope.profile.info.transformers[index].utid == utid) {
-        console.log("profile transformer to delete", $rootScope.profile.info.transformers[index]);
-        $rootScope.profile.info.transformers.splice(index,1);
+    for (var t in $rootScope.profile.info.transformers) {
+      if ($rootScope.profile.info.transformers[t].utid == utid) {
+        console.log("profile transformer to delete", $rootScope.profile.info.transformers[t]);
+        $rootScope.profile.info.transformers.splice(t,1);
       }
     }
     $scope.$emit("saveProfileChanges", ["transformers"]);
@@ -272,7 +272,7 @@ angular.module('RTM').controller('DeviceController', ['$rootScope', '$scope', '$
   $scope.transformerSelected = function(transformer) {
     console.log('-- new transformer --', transformer);
 
-    if (typeof(transformer.value.utid) !== 'undefied') {
+    if (typeof(transformer.value.utid) !== 'undefined') {
       // if transformer dowsnt exist yet, create it
       if (!$rootScope.getTransformerByUtid(transformer.value.utid)) {
         $rootScope.profile.info.transformers.push({
@@ -285,7 +285,7 @@ angular.module('RTM').controller('DeviceController', ['$rootScope', '$scope', '$
       } else {
         console.log(typeof($rootScope.getTransformerByUtid(transformer.value.utid)));
       }
-    };
+    }
   };
 
   function generateUtid() {
@@ -353,7 +353,7 @@ angular.module('RTM').controller('DeviceController', ['$rootScope', '$scope', '$
             }
           }
 
-          var buildToast = toastr.info(
+          toastr.info(
             response.status + '<br><br>Click to show build log...',
             'THiNX Builder',
             {
@@ -371,7 +371,7 @@ angular.module('RTM').controller('DeviceController', ['$rootScope', '$scope', '$
           $scope.$apply();
         } else {
           console.log(response);
-          toastr.error(response.status, '<ENV::loginPageTitle>', {timeOut: 5000})
+          toastr.error(response.status, '<ENV::loginPageTitle>', {timeOut: 5000});
         }
       } else {
         console.log('error');
@@ -381,7 +381,7 @@ angular.module('RTM').controller('DeviceController', ['$rootScope', '$scope', '$
     })
     .fail(function(error) {
       console.error('Error:', error);
-      toastr.error('Build Failed Badly.', '<ENV::loginPageTitle>', {timeOut: 5000})
+      toastr.error('Build Failed Badly.', '<ENV::loginPageTitle>', {timeOut: 5000});
     });
   };
 
@@ -401,7 +401,7 @@ angular.module('RTM').controller('DeviceController', ['$rootScope', '$scope', '$
       saveBlob(blob, build_id + '.zip');
     })
     .catch( error => {
-      toastr.error(error, '<ENV::loginPageTitle>', {timeOut: 5000})
+      toastr.error(error, '<ENV::loginPageTitle>', {timeOut: 5000});
     })
   }
 
@@ -541,7 +541,7 @@ angular.module('RTM').controller('DeviceController', ['$rootScope', '$scope', '$
       'ng-disabled="$select.disabled" ' +
       'ng-class="{\'btn-primary\':$selectMultiple.activeMatchIndex === $index, \'select-locked\':$select.isLocked(this, $index)}" ' +
       'ui-select-sort="$select.selected">' +
-      '<i class=\"fa fa-pencil\"></i>' +
+      '<i class="fa fa-pencil"></i>' +
     '</span>' +
       '<span ' +
         // 'ng-click="$selectMultiple.removeChoice($index)" ' +

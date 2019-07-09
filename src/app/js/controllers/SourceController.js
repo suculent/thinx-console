@@ -45,7 +45,7 @@ angular.module('RTM').controller('SourceController', ['$rootScope', '$scope', 's
       console.log("Looping sources: alias ", $rootScope.sources[sourceId].alias, "url", $rootScope.sources[sourceId].url);
 
       if ($rootScope.sources[sourceId].alias == $scope.sourceAlias) {
-        toastr.error('Alias must be unique.', '<ENV::loginPageTitle>', {timeOut: 5000})
+        toastr.error('Alias must be unique.', '<ENV::loginPageTitle>', {timeOut: 5000});
         return;
       }
 
@@ -64,7 +64,7 @@ angular.module('RTM').controller('SourceController', ['$rootScope', '$scope', 's
           })
           .fail(error => console.log('Error:', error));
 
-          toastr.success('Source Added.', '<ENV::loginPageTitle>', {timeOut: 5000})
+          toastr.success('Source Added.', '<ENV::loginPageTitle>', {timeOut: 5000});
 
           $('#pageModal').modal('hide');
           $scope.addingSource = false;
@@ -75,14 +75,14 @@ angular.module('RTM').controller('SourceController', ['$rootScope', '$scope', 's
       } else {
         console.log('error');
         console.log(response);
-        toastr.error('Source Failed.', '<ENV::loginPageTitle>', {timeOut: 5000})
+        toastr.error('Source Failed.', '<ENV::loginPageTitle>', {timeOut: 5000});
       }
     })
     .fail(function(error) {
       $('.msg-warning').text(error);
       $('.msg-warning').show();
       console.log('Error:', error);
-      toastr.error('Source Failed.', '<ENV::loginPageTitle>', {timeOut: 5000})
+      toastr.error('Source Failed.', '<ENV::loginPageTitle>', {timeOut: 5000});
     });
 
   };
@@ -119,12 +119,12 @@ angular.module('RTM').controller('SourceController', ['$rootScope', '$scope', 's
         Thinx.sourceList()
         .done( function(data) {
           $scope.$emit("updateSources", data);
-          toastr.success('Deleted.', '<ENV::loginPageTitle>', {timeOut: 5000})
+          toastr.success('Deleted.', '<ENV::loginPageTitle>', {timeOut: 5000});
         })
         .fail(error => console.log('Error:', error));
 
       } else {
-        toastr.error('Revocation failed.', '<ENV::loginPageTitle>', {timeOut: 5000})
+        toastr.error('Revocation failed.', '<ENV::loginPageTitle>', {timeOut: 5000});
       }
 
     })
@@ -140,7 +140,7 @@ angular.module('RTM').controller('SourceController', ['$rootScope', '$scope', 's
     if (selectedToRevoke.length > 0) {
       revokeSources(selectedToRevoke);
     } else {
-      toastr.warning('Nothing selected.', '<ENV::loginPageTitle>', {timeOut: 1000})
+      toastr.warning('Nothing selected.', '<ENV::loginPageTitle>', {timeOut: 1000});
     }
   };
 

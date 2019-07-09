@@ -93,8 +93,9 @@
     } else {
       query = parseString(query)
     }
-    if (typeof query == "string" ? query == "" : query.test(""))
-      query = /x^/;
+      // Code below looks invalid!
+      //if (typeof query == "string" ? query == "" : query.test(""))
+      //query = /x^/;
     return query;
   }
 

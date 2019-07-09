@@ -111,7 +111,7 @@ angular.module('RTM').controller('DevicesController', ['$rootScope', '$scope', '
             }
           }
 
-          var buildToast = toastr.info(
+          toastr.info(
             response.status + '<br><br>Click to show build log...',
             'THiNX Builder',
             {
@@ -129,7 +129,7 @@ angular.module('RTM').controller('DevicesController', ['$rootScope', '$scope', '
           $scope.$apply();
         } else {
           console.log(response);
-          toastr.error(response.status, '<ENV::loginPageTitle>', {timeOut: 5000})
+          toastr.error(response.status, '<ENV::loginPageTitle>', {timeOut: 5000});
         }
       } else {
         console.log('error');
@@ -139,7 +139,7 @@ angular.module('RTM').controller('DevicesController', ['$rootScope', '$scope', '
     })
     .fail(function(error) {
       console.error('Error:', error);
-      toastr.error('Build Failed Badly.', '<ENV::loginPageTitle>', {timeOut: 5000})
+      toastr.error('Build Failed Badly.', '<ENV::loginPageTitle>', {timeOut: 5000});
     });
   };
 
@@ -176,7 +176,7 @@ angular.module('RTM').controller('DevicesController', ['$rootScope', '$scope', '
     if (selectedToRevoke.length > 0) {
       revokeDevices(selectedToRevoke);
     } else {
-      toastr.warning('Nothing selected.', '<ENV::loginPageTitle>', {timeOut: 1000})
+      toastr.warning('Nothing selected.', '<ENV::loginPageTitle>', {timeOut: 1000});
     }
   };
 
@@ -193,12 +193,12 @@ angular.module('RTM').controller('DevicesController', ['$rootScope', '$scope', '
           $scope.selectedItems = [];
           $scope.$emit("updateDevices", revokeDoneDevicesList);
           $scope.$apply();
-          toastr.success('Devices Revoked.', '<ENV::loginPageTitle>', {timeOut: 5000})
+          toastr.success('Devices Revoked.', '<ENV::loginPageTitle>', {timeOut: 5000});
         })
         .fail(error =>  $scope.$emit("xhrFailed", error));
 
       } else {
-        toastr.error('Revocation failed.', '<ENV::loginPageTitle>', {timeOut: 5000})
+        toastr.error('Revocation failed.', '<ENV::loginPageTitle>', {timeOut: 5000});
       }
     })
     .fail(error => $scope.$emit("xhrFailed", error));
@@ -214,7 +214,7 @@ angular.module('RTM').controller('DevicesController', ['$rootScope', '$scope', '
     .done(function(transferDeviceResponse) {
       if (transferDeviceResponse.success) {
         console.log('Success:', transferDeviceResponse);
-        toastr.info('Transfer pending.', '<ENV::loginPageTitle>', {timeOut: 5000})
+        toastr.info('Transfer pending.', '<ENV::loginPageTitle>', {timeOut: 5000});
 
         $scope.selectedItems = [];
         $scope.transferForm.email = null;
@@ -231,7 +231,7 @@ angular.module('RTM').controller('DevicesController', ['$rootScope', '$scope', '
         .fail(error =>  $scope.$emit("xhrFailed", error));
 
       } else {
-        toastr.error('Transfer failed.', '<ENV::loginPageTitle>', {timeOut: 5000})
+        toastr.error('Transfer failed.', '<ENV::loginPageTitle>', {timeOut: 5000});
         $scope.transferForm.submitDisabled = false;
       }
     })
@@ -246,7 +246,7 @@ angular.module('RTM').controller('DevicesController', ['$rootScope', '$scope', '
     if (selectedToTransfer.length > 0) {
       transferDevices($scope.transferForm, selectedToTransfer);
     } else {
-      toastr.warning('Nothing selected.', '<ENV::loginPageTitle>', {timeOut: 1000})
+      toastr.warning('Nothing selected.', '<ENV::loginPageTitle>', {timeOut: 1000});
     }
   };
 
@@ -299,7 +299,7 @@ angular.module('RTM').controller('DevicesController', ['$rootScope', '$scope', '
     .done(function(data) {
       if (data.success) {
         console.log('Success:', data);
-        toastr.success('Configuration Pushed.', '<ENV::loginPageTitle>', {timeOut: 5000})
+        toastr.success('Configuration Pushed.', '<ENV::loginPageTitle>', {timeOut: 5000});
 
         $('#configModal').modal('hide');
 
@@ -309,7 +309,7 @@ angular.module('RTM').controller('DevicesController', ['$rootScope', '$scope', '
         $scope.configForm.resetDevices = false;
 
       } else {
-        toastr.error('Push Configuration failed.', '<ENV::loginPageTitle>', {timeOut: 5000})
+        toastr.error('Push Configuration failed.', '<ENV::loginPageTitle>', {timeOut: 5000});
       }
     })
     .fail(error => $scope.$emit("xhrFailed", error));
@@ -323,7 +323,7 @@ angular.module('RTM').controller('DevicesController', ['$rootScope', '$scope', '
     if (selectedToProcess.length > 0) {
       pushConfig($scope.configForm, selectedToProcess);
     } else {
-      toastr.warning('Nothing selected.', '<ENV::loginPageTitle>', {timeOut: 1000})
+      toastr.warning('Nothing selected.', '<ENV::loginPageTitle>', {timeOut: 1000});
     }
   };
 

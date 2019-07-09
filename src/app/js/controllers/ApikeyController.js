@@ -41,7 +41,7 @@ angular.module('RTM').controller('ApikeyController', ['$rootScope', '$scope', 's
       console.log("Looping apikeys: alias ", $rootScope.apikeys[apikeyId].alias);
 
       if ($rootScope.apikeys[apikeyId].alias == apikeyAlias) {
-        toastr.error('Alias must be unique.', '<ENV::loginPageTitle>', {timeOut: 5000})
+        toastr.error('Alias must be unique.', '<ENV::loginPageTitle>', {timeOut: 5000});
         return;
       }
     }
@@ -80,7 +80,7 @@ angular.module('RTM').controller('ApikeyController', ['$rootScope', '$scope', 's
       } else {
         console.log('error');
         console.log(response);
-        toastr.error('Apikey creation failed.', '<ENV::loginPageTitle>', {timeOut: 5000})
+        toastr.error('Apikey creation failed.', '<ENV::loginPageTitle>', {timeOut: 5000});
       }
     })
     .fail(function(error) {
@@ -101,13 +101,13 @@ angular.module('RTM').controller('ApikeyController', ['$rootScope', '$scope', 's
         Thinx.apikeyList()
         .done( function(data) {
 
-          toastr.success('Deleted.', '<ENV::loginPageTitle>', {timeOut: 5000})
-          $scope.$emit("updateApikeys", data);;
+          toastr.success('Deleted.', '<ENV::loginPageTitle>', {timeOut: 5000});
+          $scope.$emit("updateApikeys", data);
         })
         .fail(error => console.log('Error:', error));
 
       } else {
-        toastr.error('Revocation failed.', '<ENV::loginPageTitle>', {timeOut: 5000})
+        toastr.error('Revocation failed.', '<ENV::loginPageTitle>', {timeOut: 5000});
       }
 
     })
