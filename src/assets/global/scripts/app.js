@@ -154,12 +154,6 @@ var App = function() {
                         var msg = 'Error on reloading the content. Please check your connection and try again.';
                         if (error == "toastr" && toastr) {
                             toastr.error(msg);
-                        } else if (error == "notific8" && $.notific8) {
-                            $.notific8('zindex', 11500);
-                            $.notific8(msg, {
-                                theme: 'ruby',
-                                life: 3000
-                            });
                         } else {
                             alert(msg);
                         }

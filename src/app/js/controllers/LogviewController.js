@@ -179,7 +179,7 @@ angular.module('RTM').controller('LogviewController', ['$rootScope', '$scope', '
 
         // YES/NO
         if (msg.response_type == 'bool') {
-          var formToast = toastr['info'](
+          let formToast = toastr['info'](
             msg.body + "<br><br>" +
             msg.nid + "<br><br>" +
             '<div><button type="button" id="okBtn-' + msg.nid +
@@ -211,7 +211,7 @@ angular.module('RTM').controller('LogviewController', ['$rootScope', '$scope', '
 
         // INPUT string
         if (msg.response_type == 'string') {
-          var formToast = toastr['warning'](
+          let formToast = toastr['warning'](
             msg.body + "<br><br>" +
             msg.nid + "<br><br>" +
             '<div><input class="toastr-input" name="reply-' + msg.nid + '" value=""/></div><br>' +
