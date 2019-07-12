@@ -312,7 +312,7 @@ $.validator.addMethod( "cnhBR", function( value ) {
   }
 
   // Step 1 - using first Check Number:
-  for ( i = 0, j = 9, v = 0; i < 9; ++i, --j ) {
+  for ( i = 0, j = 9; i < 9; ++i, --j ) {
     sum += +( value.charAt( i ) * j );
   }
 
@@ -323,7 +323,7 @@ $.validator.addMethod( "cnhBR", function( value ) {
   }
 
   sum = 0;
-  for ( i = 0, j = 1, v = 0; i < 9; ++i, ++j ) {
+  for ( i = 0, j = 1; i < 9; ++i, ++j ) {
     sum += +( value.charAt( i ) * j );
   }
 
@@ -997,8 +997,8 @@ $.validator.addMethod( "nieES", function( value, element ) {
 		return true;
 	}
 
-	var nieRegEx = new RegExp( /^[MXYZ]{1}[0-9]{7,8}[TRWAGMYFPDXBNJZSQVHLCKET]{1}$/gi );
-	var validChars = "TRWAGMYFPDXBNJZSQVHLCKET",
+	var nieRegEx = new RegExp( /^[MXYZ]{1}[0-9]{7,8}[TRWAGMYFPDXBNJZSQVHLCKE]{1}$/gi );
+	var validChars = "TRWAGMYFPDXBNJZSQVHLCKE",
 		letter = value.substr( value.length - 1 ).toUpperCase(),
 		number;
 

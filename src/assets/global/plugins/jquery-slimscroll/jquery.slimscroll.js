@@ -92,6 +92,7 @@
 
         // used in event handlers and for better minification
         var me = $(this);
+        var bar, rail;
 
         // ensure we are not binding it again
         if (me.parent().hasClass(o.wrapperClass))
@@ -340,7 +341,7 @@
         function scrollContent(y, isWheel, isJump)
         {
           releaseScroll = false;
-          var delta = y;
+          var delta;
           var maxTop = me.outerHeight() - bar.outerHeight();
 
           if (isWheel)
