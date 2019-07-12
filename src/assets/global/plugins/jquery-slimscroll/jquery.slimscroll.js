@@ -92,6 +92,7 @@
 
         // used in event handlers and for better minification
         var me = $(this);
+        var bar, rail;
 
         // ensure we are not binding it again
         if (me.parent().hasClass(o.wrapperClass))
@@ -227,13 +228,14 @@
             pageY = e.pageY;
 
             $doc.bind("mousemove.slimscroll", function(e){
-              currTop = t + e.pageY - pageY;
+              var currTop = t + e.pageY - pageY;
               bar.css('top', currTop);
               scrollContent(0, bar.position().top, false);// scroll content
             });
 
             $doc.bind("mouseup.slimscroll", function(e) {
-              isDragg = false;hideBar();
+              isDragg = false;
+              hideBar();
               $doc.unbind('.slimscroll');
             });
             return false;
@@ -340,7 +342,7 @@
         function scrollContent(y, isWheel, isJump)
         {
           releaseScroll = false;
-          var delta = y;
+          var delta;
           var maxTop = me.outerHeight() - bar.outerHeight();
 
           if (isWheel)
