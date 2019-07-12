@@ -643,6 +643,7 @@ function init($rootScope, $scope) {
     }
   }
 
+  /*
   function registerNotification() {
     $webNotification.showNotification('Wohoo!', {
       body: 'Browser Notification Test Success.',
@@ -664,6 +665,7 @@ function init($rootScope, $scope) {
       }
     });
   }
+  */
 
   Thinx.getProfile()
   .done(function(data) {
