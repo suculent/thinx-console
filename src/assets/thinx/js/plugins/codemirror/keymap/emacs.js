@@ -326,7 +326,7 @@
 
     "Ctrl-Alt-K": function(cm) { killTo(cm, byExpr, 1, "grow"); },
     "Ctrl-Alt-Backspace": function(cm) { killTo(cm, byExpr, -1, "grow"); },
-    "Ctrl-Alt-F": move(byExpr, 1), "Ctrl-Alt-B": move(byExpr, -1, "grow"),
+    "Ctrl-Alt-F": move(byExpr, 1), "Ctrl-Alt-B": move(byExpr, -1),
 
     "Shift-Ctrl-Alt-2": function(cm) {
       var cursor = cm.getCursor();

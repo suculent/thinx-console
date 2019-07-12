@@ -228,13 +228,14 @@
             pageY = e.pageY;
 
             $doc.bind("mousemove.slimscroll", function(e){
-              currTop = t + e.pageY - pageY;
+              var currTop = t + e.pageY - pageY;
               bar.css('top', currTop);
               scrollContent(0, bar.position().top, false);// scroll content
             });
 
             $doc.bind("mouseup.slimscroll", function(e) {
-              isDragg = false;hideBar();
+              isDragg = false;
+              hideBar();
               $doc.unbind('.slimscroll');
             });
             return false;
