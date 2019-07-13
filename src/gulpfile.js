@@ -181,8 +181,10 @@ gulp.task('buildPublic', function() {
   var compiled_public_js,
       compiled_public_css;
 
+ /*
   var compiled_app_js,
       compiled_app_css;
+  */
 
   // JS
   compiled_public_js = merge(
