@@ -18,7 +18,7 @@ services:
     build:
       context: ./src
       args:
-        - COMPOSE_PROJECT_NAME=$(COMPOSE_PROJECT_NAME)
+        - COMPOSE_PROJECT_NAME=${COMPOSE_PROJECT_NAME}
         - WEB_HOSTNAME=${WEB_HOSTNAME}
         - API_HOSTNAME=${API_HOSTNAME}
         - API_BASEURL=${API_BASEURL}
