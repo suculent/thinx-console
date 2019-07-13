@@ -1072,7 +1072,7 @@
           i += 2;
           at = Math.min(end, i_end);
         }
-        if (!style) { return; };
+        if (!style) { return; }
         if (overlay.opaque) {
           st.splice(start, i - start, end, "overlay " + style);
           i = start + 2;
@@ -1776,7 +1776,7 @@
   // Build up the DOM representation for a single token, and add it to
   // the line map. Takes care to render special characters separately.
   function buildToken(builder, text, style, startStyle, endStyle, css, attributes) {
-    if (!text) { return; };
+    if (!text) { return; }
     var displayText = builder.splitSpaces ? splitSpaces(text, builder.trailingSpace) : text;
     var special = builder.cm.state.specialChars, mustWrap = false;
     var content;
@@ -6494,7 +6494,7 @@
       this.direction = dir;
       this.iter(function (line) { return line.order = null; });
       if (this.cm) { directionChanged(this.cm); }
-    });
+    })
   });
 
   // Public alias.
