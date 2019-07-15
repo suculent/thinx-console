@@ -2410,7 +2410,7 @@ if (!Array.prototype.indexOf) {
           }
       }
       return -1;
-  }
+  };
 }
 
 return GMaps;
