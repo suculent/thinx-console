@@ -99,7 +99,7 @@
   };
 
   function insertLine(cm, above) {
-    if (cm.isReadOnly()) return CodeMirror.Pass
+    if (cm.isReadOnly()) return CodeMirror.Pass;
     cm.operation(function() {
       var len = cm.listSelections().length, newSelection = [], last = -1;
       for (var i = 0; i < len; i++) {
@@ -145,7 +145,7 @@
         found = cur.findNext();
       }
       if (!found || isSelectedRange(cm.listSelections(), cur.from(), cur.to()))
-        return CodeMirror.Pass
+        return CodeMirror.Pass;
       cm.addSelection(cur.from(), cur.to());
     }
     if (fullWord)
@@ -181,7 +181,7 @@
 
   var mirror = "(){}[]";
   function selectBetweenBrackets(cm) {
-    var ranges = cm.listSelections(), newRanges = []
+    var ranges = cm.listSelections(), newRanges = [];
     for (var i = 0; i < ranges.length; i++) {
       var range = ranges[i], pos = range.head, opening = cm.scanForBracket(pos, -1);
       if (!opening) return false;
@@ -223,7 +223,7 @@
   };
 
   cmds.swapLineUp = function(cm) {
-    if (cm.isReadOnly()) return CodeMirror.Pass
+    if (cm.isReadOnly()) return CodeMirror.Pass;
     var ranges = cm.listSelections(), linesToMove = [], at = cm.firstLine() - 1, newSels = [];
     for (var i = 0; i < ranges.length; i++) {
       var range = ranges[i], from = range.from().line - 1, to = range.to().line;
@@ -250,7 +250,7 @@
   };
 
   cmds.swapLineDown = function(cm) {
-    if (cm.isReadOnly()) return CodeMirror.Pass
+    if (cm.isReadOnly()) return CodeMirror.Pass;
     var ranges = cm.listSelections(), linesToMove = [], at = cm.lastLine() + 1;
     for (var i = ranges.length - 1; i >= 0; i--) {
       var range = ranges[i], from = range.to().line + 1, to = range.from().line;
@@ -275,7 +275,7 @@
 
   cmds.toggleCommentIndented = function(cm) {
     cm.toggleComment({ indent: true });
-  }
+  };
 
   cmds.joinLines = function(cm) {
     var ranges = cm.listSelections(), joined = [];
@@ -321,7 +321,7 @@
 
 
   function sortLines(cm, caseSensitive) {
-    if (cm.isReadOnly()) return CodeMirror.Pass
+    if (cm.isReadOnly()) return CodeMirror.Pass;
     var ranges = cm.listSelections(), toSort = [], selected;
     for (var i = 0; i < ranges.length; i++) {
       var range = ranges[i];

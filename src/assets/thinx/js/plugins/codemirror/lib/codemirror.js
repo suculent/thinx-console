@@ -1,3 +1,5 @@
+/* eslint no-empty: ["error", { "allowEmptyCatch": true }] */
+
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
 // Distributed under an MIT license: https://codemirror.net/LICENSE
 
@@ -375,7 +377,7 @@
     return function(str, direction) {
       var outerType = direction == "ltr" ? "L" : "R";
 
-      if (str.length == 0 || direction == "ltr" && !bidiRE.test(str)) { return false };
+      if (str.length == 0 || direction == "ltr" && !bidiRE.test(str)) { return false }
       var len = str.length, types = [];
       for (var i = 0; i < len; ++i)
         { types.push(charType(str.charCodeAt(i))); }
@@ -421,7 +423,9 @@
         if (type$3 == ",") { types[i$4] = "N"; }
         else if (type$3 == "%") {
           var end = (void 0);
-          for (end = i$4 + 1; end < len && types[end] == "%"; ++end) {}
+          for (end = i$4 + 1; end < len && types[end] == "%"; ++end) {
+            // empty
+          }
           var replace = (i$4 && types[i$4-1] == "!") || (end < len && types[end] == "1") ? "1" : "N";
           for (var j = i$4; j < end; ++j) { types[j] = replace; }
           i$4 = end - 1;
@@ -446,7 +450,9 @@
       for (var i$6 = 0; i$6 < len; ++i$6) {
         if (isNeutral.test(types[i$6])) {
           var end$1 = (void 0);
-          for (end$1 = i$6 + 1; end$1 < len && isNeutral.test(types[end$1]); ++end$1) {}
+          for (end$1 = i$6 + 1; end$1 < len && isNeutral.test(types[end$1]); ++end$1) {
+            // empty
+          }
           var before = (i$6 ? types[i$6-1] : outerType) == "L";
           var after = (end$1 < len ? types[end$1] : outerType) == "L";
           var replace$1 = before == after ? (before ? "L" : "R") : outerType;
@@ -464,16 +470,22 @@
       for (var i$7 = 0; i$7 < len;) {
         if (countsAsLeft.test(types[i$7])) {
           var start = i$7;
-          for (++i$7; i$7 < len && countsAsLeft.test(types[i$7]); ++i$7) {}
+          for (++i$7; i$7 < len && countsAsLeft.test(types[i$7]); ++i$7) {
+            // empty
+          }
           order.push(new BidiSpan(0, start, i$7));
         } else {
           var pos = i$7, at = order.length;
-          for (++i$7; i$7 < len && types[i$7] != "L"; ++i$7) {}
+          for (++i$7; i$7 < len && types[i$7] != "L"; ++i$7) {
+            // empty
+          }
           for (var j$2 = pos; j$2 < i$7;) {
             if (countsAsNum.test(types[j$2])) {
               if (pos < j$2) { order.splice(at, 0, new BidiSpan(1, pos, j$2)); }
               var nstart = j$2;
-              for (++j$2; j$2 < i$7 && countsAsNum.test(types[j$2]); ++j$2) {}
+              for (++j$2; j$2 < i$7 && countsAsNum.test(types[j$2]); ++j$2) {
+                // empty
+              }
               order.splice(at, 0, new BidiSpan(2, nstart, j$2));
               pos = j$2;
             } else { ++j$2; }
@@ -813,7 +825,9 @@
   };
   StringStream.prototype.eatWhile = function (match) {
     var start = this.pos;
-    while (this.eat(match)){}
+    while (this.eat(match)){
+      // empty
+    }
     return this.pos > start
   };
   StringStream.prototype.eatSpace = function () {
@@ -1801,7 +1815,7 @@
           builder.col += skipped;
           builder.pos += skipped;
         }
-        if (!m) { break; };
+        if (!m) { break; }
         pos += skipped + 1;
         var txt$1 = (void 0);
         if (m[0] == "\t") {
@@ -2737,8 +2751,7 @@
     // If the line isn't plain left-to-right text, first figure out
     // which bidi section the coordinates fall into.
     if (order) {
-      var part = (cm.options.lineWrapping ? coordsBidiPartWrapped : coordsBidiPart)
-                   (cm, lineObj, lineNo$$1, preparedMeasure, order, x, y);
+      var part = (cm.options.lineWrapping ? coordsBidiPartWrapped : coordsBidiPart) (cm, lineObj, lineNo$$1, preparedMeasure, order, x, y);
       ltr = part.level != 1;
       // The awkward -1 offsets are needed because findFirst (called
       // on these below) will treat its first bound as inclusive,
@@ -6960,10 +6973,10 @@
     }); },
     deleteLine: function (cm) { return deleteNearSelection(cm, function (range) { return ({
       from: Pos(range.from().line, 0),
-      to: clipPos(cm.doc, Pos(range.to().line + 1, 0));
+      to: clipPos(cm.doc, Pos(range.to().line + 1, 0))
     }); }); },
     delLineLeft: function (cm) { return deleteNearSelection(cm, function (range) { return ({
-      from: Pos(range.from().line, 0), to: range.from();
+      from: Pos(range.from().line, 0), to: range.from()
     }); }); },
     delWrappedLineLeft: function (cm) { return deleteNearSelection(cm, function (range) {
       var top = cm.charCoords(range.head, "div").top + 5;
@@ -8543,7 +8556,7 @@
 
       toggleOverwrite: function(value) {
         if (value != null && value == this.state.overwrite) { return; }
-        if (this.state.overwrite = !this.state.overwrite)
+        if (value == !this.state.overwrite)
           { addClass(this.display.cursorDiv, "CodeMirror-overwrite"); }
         else
           { rmClass(this.display.cursorDiv, "CodeMirror-overwrite"); }
